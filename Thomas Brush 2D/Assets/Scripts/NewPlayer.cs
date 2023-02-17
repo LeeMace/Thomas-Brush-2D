@@ -7,6 +7,8 @@ public class NewPlayer : PhysicsObject
 
     [SerializeField] private float  maxSpeed = 1;
     [SerializeField] private float jumpPower = 10f;
+
+    public int coinsCollected;
     void Start()
     {
         

@@ -4,16 +4,40 @@ using UnityEngine;
 
 public class Collectables : MonoBehaviour
 {
+    
+    enum ItemType { Coin, Health, Ammo}
+    [SerializeField] private ItemType itemType;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        if (itemType == ItemType.Coin)
+        {
+            Debug.Log("I'm a coin");
+        }
+        else if (itemType == ItemType.Health)
+        {
+            Debug.Log("I'm health");
+        }
+        else if (itemType == ItemType.Ammo)
+        {
+            Debug.Log("I'm ammo");
+        }
+        else 
+        {
+            Debug.Log("I'm an inventory item");
+        }
     }
-
-    // Update is called once per frame
     void Update()
     {
         
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            GameObject.Find("Player").GetComponent<NewPlayer>().coinsCollected += 1;
+            Destroy(gameObject);
+        }        
     }
 }
