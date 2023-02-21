@@ -37,6 +37,7 @@ public class Collectables : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             GameObject.Find("Player").GetComponent<NewPlayer>().coinsCollected += 1;
+            
             Destroy(gameObject);
         }        
     }

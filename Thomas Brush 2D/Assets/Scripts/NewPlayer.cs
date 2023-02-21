@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class NewPlayer : PhysicsObject
 {
@@ -9,9 +11,11 @@ public class NewPlayer : PhysicsObject
     [SerializeField] private float jumpPower = 10f;
 
     public int coinsCollected;
+
+    public TMP_Text coinsText;
     void Start()
     {
-        
+     
     }
 
     // Update is called once per frame
@@ -23,5 +27,10 @@ public class NewPlayer : PhysicsObject
         {
             velocity.y = jumpPower;
         }
+    }
+
+    public void UpdateUI()
+    {
+        coinsText.text = coinsCollected.ToString;
     }
 }
