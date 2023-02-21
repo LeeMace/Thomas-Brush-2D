@@ -12,10 +12,10 @@ public class NewPlayer : PhysicsObject
 
     public int coinsCollected;
 
-    public TMP_Text coinsText;
+    public Text coinsText;
     void Start()
     {
-     
+
     }
 
     // Update is called once per frame
@@ -31,6 +31,7 @@ public class NewPlayer : PhysicsObject
 
     public void UpdateUI()
     {
-        coinsText.text = coinsCollected.ToString;
+        //changes coinstext int to a string so it can be displayed in the UI
+        coinsText.text = coinsCollected.ToString();
     }
 }

@@ -8,6 +8,7 @@ public class Collectables : MonoBehaviour
     enum ItemType { Coin, Health, Ammo}
     [SerializeField] private ItemType itemType;
 
+    NewPlayer newPlayer;
 
     void Start()
     {
@@ -27,6 +28,8 @@ public class Collectables : MonoBehaviour
         {
             Debug.Log("I'm an inventory item");
         }
+
+        newPlayer = GameObject.Find("Player").GetComponent<NewPlayer>();
     }
     void Update()
     {
@@ -36,8 +39,10 @@ public class Collectables : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            GameObject.Find("Player").GetComponent<NewPlayer>().coinsCollected += 1;
-            
+            //if a coin is collected the total goes up
+            newPlayer.coinsCollected += 1;
+            //the UI shows the correct number of coins collected. 
+            newPlayer.UpdateUI();
             Destroy(gameObject);
         }        
     }
