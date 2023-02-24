@@ -12,23 +12,6 @@ public class Collectables : MonoBehaviour
 
     void Start()
     {
-        if (itemType == ItemType.Coin)
-        {
-            Debug.Log("I'm a coin");
-        }
-        else if (itemType == ItemType.Health)
-        {
-            Debug.Log("I'm health");
-        }
-        else if (itemType == ItemType.Ammo)
-        {
-            Debug.Log("I'm ammo");
-        }
-        else 
-        {
-            Debug.Log("I'm an inventory item");
-        }
-
         newPlayer = GameObject.Find("Player").GetComponent<NewPlayer>();
     }
     void Update()
@@ -39,8 +22,27 @@ public class Collectables : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
+        if (itemType == ItemType.Coin)
+        {
             //if a coin is collected the total goes up
-            newPlayer.coinsCollected += 1;
+            newPlayer.coinsCollected += 1;         
+        }
+        else if (itemType == ItemType.Health)
+        {
+                //cannot go over 100 health
+                if (newPlayer.health < 100)
+                {
+                    newPlayer.health += 1;
+                }
+        }
+        else if (itemType == ItemType.Ammo)
+        {
+            
+        }
+        else 
+        {
+            
+        }
             //the UI shows the correct number of coins collected. 
             newPlayer.UpdateUI();
             Destroy(gameObject);

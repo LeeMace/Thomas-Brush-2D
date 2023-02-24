@@ -11,11 +11,18 @@ public class NewPlayer : PhysicsObject
     [SerializeField] private float jumpPower = 10f;
 
     public int coinsCollected;
+    private int maxHealth = 100;
+    public int health = 100;
+    public int ammo;
 
     public Text coinsText;
+    public Image healthBar;
+    [SerializeField] private Vector2 healthBarOrigSize;
+
     void Start()
     {
-
+        healthBarOrigSize = healthBar.rectTransform.sizeDelta;
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -33,5 +40,8 @@ public class NewPlayer : PhysicsObject
     {
         //changes coinstext int to a string so it can be displayed in the UI
         coinsText.text = coinsCollected.ToString();
+        //set the health bar to a percentage of its original width
+        healthBar.rectTransform.sizeDelta = new Vector2(healthBarOrigSize.x * ((float)health / (float)maxHealth), healthBar.rectTransform.sizeDelta.y);
+      
     }
 }
