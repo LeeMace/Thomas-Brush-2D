@@ -15,6 +15,10 @@ public class NewPlayer : PhysicsObject
     public int health = 100;
     public int ammo;
 
+    public Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
+    public Sprite keySprite;
+    public Image inventoryItemImage;
+
     public Text coinsText;
     public Image healthBar;
     [SerializeField] private Vector2 healthBarOrigSize;
@@ -23,6 +27,9 @@ public class NewPlayer : PhysicsObject
     {
         healthBarOrigSize = healthBar.rectTransform.sizeDelta;
         UpdateUI();
+
+        inventory.Add("key1", keySprite);
+        inventoryItemImage.sprite = inventory["key1"];
     }
 
     // Update is called once per frame
