@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class NewPlayer : PhysicsObject
 {
 
-    [SerializeField] private float  maxSpeed = 1;
+    [SerializeField] private float maxSpeed = 1;
     [SerializeField] private float jumpPower = 10f;
 
     public int coinsCollected;
@@ -18,6 +18,7 @@ public class NewPlayer : PhysicsObject
     public Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
     public Sprite keySprite;
     public Image inventoryItemImage;
+    public Sprite keyGemSprite;
 
     public Text coinsText;
     public Image healthBar;
@@ -27,15 +28,12 @@ public class NewPlayer : PhysicsObject
     {
         healthBarOrigSize = healthBar.rectTransform.sizeDelta;
         UpdateUI();
-
-        inventory.Add("key1", keySprite);
-        inventoryItemImage.sprite = inventory["key1"];
     }
 
     // Update is called once per frame
     void Update()
     {
-        targetVelocity = new Vector2(Input.GetAxis("Horizontal")* maxSpeed, 0);
+        targetVelocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, 0);
 
         if (Input.GetButtonDown("Jump") && grounded)
         {
@@ -49,6 +47,13 @@ public class NewPlayer : PhysicsObject
         coinsText.text = coinsCollected.ToString();
         //set the health bar to a percentage of its original width
         healthBar.rectTransform.sizeDelta = new Vector2(healthBarOrigSize.x * ((float)health / (float)maxHealth), healthBar.rectTransform.sizeDelta.y);
-      
+
+    }
+
+    public void AddInventoryItem(string inventoryName, Sprite image)
+    {
+        inventory.Add(inventoryName, image);
+        //changes the blank sprite to the key sprite
+        inventoryItemImage.sprite = inventory[inventoryName];
     }
 }
