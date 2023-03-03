@@ -5,11 +5,13 @@ using UnityEngine;
 public class Collectables : MonoBehaviour
 {
     
-    enum ItemType { Coin, Health, Ammo}
+    enum ItemType { Coin, Health, Ammo, InventoryItem}
     [SerializeField] private ItemType itemType;
 
     NewPlayer newPlayer;
 
+    [SerializeField] private string inventoryStringName;
+    [SerializeField] private Sprite inventorySprite;
     void Start()
     {
         newPlayer = GameObject.Find("Player").GetComponent<NewPlayer>();
@@ -39,6 +41,10 @@ public class Collectables : MonoBehaviour
         {
             
         }
+        else if(itemType == ItemType.InventoryItem)
+            {
+                newPlayer.AddInventoryItem(inventoryStringName , inventorySprite);
+            }
         else 
         {
             

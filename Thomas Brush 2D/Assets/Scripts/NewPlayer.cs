@@ -19,6 +19,7 @@ public class NewPlayer : PhysicsObject
     public Sprite keySprite;
     public Image inventoryItemImage;
     public Sprite keyGemSprite;
+    public Sprite inventoryItemBlank;
 
     public Text coinsText;
     public Image healthBar;
@@ -55,5 +56,12 @@ public class NewPlayer : PhysicsObject
         inventory.Add(inventoryName, image);
         //changes the blank sprite to the key sprite
         inventoryItemImage.sprite = inventory[inventoryName];
+    }
+
+    public void RemoveInventoryItem(string inventoryName)
+    {
+        inventory.Remove(inventoryName);
+        //changes the key sprite to the blank sprite
+        inventoryItemImage.sprite = inventoryItemBlank;
     }
 }
