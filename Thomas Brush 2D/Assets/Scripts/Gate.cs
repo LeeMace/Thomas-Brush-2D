@@ -18,15 +18,15 @@ public class Gate : MonoBehaviour
         
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.name == "Player")
+        if(collision.gameObject == NewPlayer.Instance.gameObject)
         {
             Debug.Log("the player is touching me");
 
-            if (GameObject.Find("Player").GetComponent<NewPlayer>().inventory.ContainsKey(requiredInventoryItemString))
+            if (NewPlayer.Instance.inventory.ContainsKey(requiredInventoryItemString))
             {
-                GameObject.Find("Player").GetComponent<NewPlayer>().RemoveInventoryItem(requiredInventoryItemString);
+                NewPlayer.Instance.RemoveInventoryItem(requiredInventoryItemString);
                 Destroy(gameObject);
             }
         }

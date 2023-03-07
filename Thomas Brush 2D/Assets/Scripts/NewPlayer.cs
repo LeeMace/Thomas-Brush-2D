@@ -25,6 +25,19 @@ public class NewPlayer : PhysicsObject
     public Image healthBar;
     [SerializeField] private Vector2 healthBarOrigSize;
 
+    //Singleton instansiation
+    private static NewPlayer instance;
+    public static NewPlayer Instance
+    {
+        get 
+        {
+            if (instance == null) instance = GameObject.FindObjectOfType<NewPlayer>();
+            return instance;
+        }
+    }
+    
+
+
     void Start()
     {
         healthBarOrigSize = healthBar.rectTransform.sizeDelta;

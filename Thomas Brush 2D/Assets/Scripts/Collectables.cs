@@ -8,13 +8,11 @@ public class Collectables : MonoBehaviour
     enum ItemType { Coin, Health, Ammo, InventoryItem}
     [SerializeField] private ItemType itemType;
 
-    NewPlayer newPlayer;
-
     [SerializeField] private string inventoryStringName;
     [SerializeField] private Sprite inventorySprite;
     void Start()
     {
-        newPlayer = GameObject.Find("Player").GetComponent<NewPlayer>();
+
     }
     void Update()
     {
@@ -22,19 +20,19 @@ public class Collectables : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject == NewPlayer.Instance.gameObject)
         {
         if (itemType == ItemType.Coin)
         {
             //if a coin is collected the total goes up
-            newPlayer.coinsCollected += 1;         
+            NewPlayer.Instance.coinsCollected += 1;         
         }
         else if (itemType == ItemType.Health)
         {
                 //cannot go over 100 health
-                if (newPlayer.health < 100)
+                if (NewPlayer.Instance.health < 100)
                 {
-                    newPlayer.health += 1;
+                    NewPlayer.Instance.health += 1;
                 }
         }
         else if (itemType == ItemType.Ammo)
@@ -43,14 +41,14 @@ public class Collectables : MonoBehaviour
         }
         else if(itemType == ItemType.InventoryItem)
             {
-                newPlayer.AddInventoryItem(inventoryStringName , inventorySprite);
+                NewPlayer.Instance.AddInventoryItem(inventoryStringName , inventorySprite);
             }
         else 
         {
             
         }
             //the UI shows the correct number of coins collected. 
-            newPlayer.UpdateUI();
+            NewPlayer.Instance.UpdateUI();
             Destroy(gameObject);
         }        
     }
