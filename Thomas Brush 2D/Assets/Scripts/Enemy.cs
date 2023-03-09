@@ -6,13 +6,15 @@ public class Enemy : PhysicsObject
 {
     [SerializeField] private float maxSpeed;
     private int direction = 1;
+    [SerializeField] private int attackPower = 10;
+    public int health = 100;
+    private int maxHealth = 100;
+
     private RaycastHit2D rightLedgeRaycastHit;
     private RaycastHit2D leftLedgeRaycastHit;
     private RaycastHit2D rightWallRaycastHit;
     private RaycastHit2D leftWallRaycastHit;
     [SerializeField] private LayerMask raycastlayerMask;
-    [SerializeField] private int attackPower = 10;
-
     [SerializeField] private Vector2 rayCastOffset;
     [SerializeField] private float rayCastLength =1.5f;
 
@@ -52,7 +54,10 @@ public class Enemy : PhysicsObject
             direction = 1;
         }
 
-        
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

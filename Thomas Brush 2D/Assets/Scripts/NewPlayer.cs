@@ -14,6 +14,9 @@ public class NewPlayer : PhysicsObject
     private int maxHealth = 100;
     public int health = 100;
     public int ammo;
+    [SerializeField] private GameObject attackBox;
+    [SerializeField] private float attackDuration;
+    public int attackPower = 25;
 
     public Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
     public Sprite keySprite;
@@ -53,7 +56,29 @@ public class NewPlayer : PhysicsObject
         {
             velocity.y = jumpPower;
         }
+
+        //flip the player if moving left or right
+        if(targetVelocity.x < -.01)
+        {
+            transform.localScale = new Vector2(-1, 1);
+        }
+        else if(targetVelocity.x > .01)
+        {
+            transform.localScale = new Vector2(1, 1);
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            StartCoroutine(ActivateAttack());
+        }
+       
     }
+        public IEnumerator ActivateAttack()
+        {
+        attackBox.SetActive(true);
+        yield return new WaitForSeconds(attackDuration);
+        attackBox.SetActive(false);
+        }
 
     public void UpdateUI()
     {
