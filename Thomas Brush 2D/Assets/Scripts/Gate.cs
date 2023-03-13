@@ -22,7 +22,7 @@ public class Gate : MonoBehaviour
     {
         if(collision.gameObject == NewPlayer.Instance.gameObject)
         {
-            Debug.Log("the player is touching me");
+            Debug.Log("I am a door. The player is touching me with a key. I will open but tkae his key. ");
 
             if (NewPlayer.Instance.inventory.ContainsKey(requiredInventoryItemString))
             {

@@ -42,6 +42,7 @@ public class Collectables : MonoBehaviour
         else if(itemType == ItemType.InventoryItem)
             {
                 NewPlayer.Instance.AddInventoryItem(inventoryStringName , inventorySprite);
+                Debug.Log("You have found a key.");
             }
         else 
         {

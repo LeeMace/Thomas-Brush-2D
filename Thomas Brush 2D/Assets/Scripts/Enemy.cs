@@ -64,7 +64,7 @@ public class Enemy : PhysicsObject
     {
         if (collision.gameObject == NewPlayer.Instance.gameObject)
         {
-            Debug.Log("Hurt you!");
+            Debug.Log("I am enemy. I hurt player!");
             NewPlayer.Instance.health -= attackPower;
             NewPlayer.Instance.UpdateUI();
         }

@@ -21,6 +21,7 @@ public class AttackBox : MonoBehaviour
         if (collision.gameObject.GetComponent<Enemy>())
         {
             collision.gameObject.GetComponent<Enemy>().health -= NewPlayer.Instance.attackPower;
+            Debug.Log("I, the player, am attaching you");
         }
 
     }

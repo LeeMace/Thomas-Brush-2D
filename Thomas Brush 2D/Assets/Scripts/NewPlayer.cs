@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NewPlayer : PhysicsObject
 {
@@ -27,6 +28,8 @@ public class NewPlayer : PhysicsObject
     public Text coinsText;
     public Image healthBar;
     [SerializeField] private Vector2 healthBarOrigSize;
+
+    private float delay = 3;
 
     //Singleton instansiation
     private static NewPlayer instance;
@@ -71,7 +74,12 @@ public class NewPlayer : PhysicsObject
         {
             StartCoroutine(ActivateAttack());
         }
-       
+
+        if (health <= 0)
+        {
+            Die();
+        }
+
     }
         public IEnumerator ActivateAttack()
         {
@@ -101,5 +109,14 @@ public class NewPlayer : PhysicsObject
         inventory.Remove(inventoryName);
         //changes the key sprite to the blank sprite
         inventoryItemImage.sprite = inventoryItemBlank;
+    }
+
+    public void Die()
+    {
+        delay -= Time.deltaTime;
+        if (delay <= 0)
+        {
+            SceneManager.LoadScene("Level1");
+        }
     }
 }
