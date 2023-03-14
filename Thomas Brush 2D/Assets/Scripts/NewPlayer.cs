@@ -113,8 +113,7 @@ public class NewPlayer : PhysicsObject
 
     public void Die()
     {
-        delay -= Time.deltaTime;
-        if (delay <= 0)
+        if (health <= 0)
         {
             SceneManager.LoadScene("Level1");
         }
