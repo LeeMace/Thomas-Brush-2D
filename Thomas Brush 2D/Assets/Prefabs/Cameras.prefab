@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 6778212241993082574}
   - component: {fileID: 6778212241993082572}
   - component: {fileID: 6778212241993082416}
+  - component: {fileID: 4043835540981223788}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -222,7 +223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6778212241993082573}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.67366, y: -4.726836, z: -9.807709}
+  m_LocalPosition: {x: -17.000462, y: 6.5564065, z: -9.807709}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -314,6 +315,19 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4043835540981223788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778212241993082573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 725bc15525db0824b95056744926d9d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineVirtualCamera: {fileID: 6778212241991617380}
 --- !u!1 &6778212243342099887
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,7 +29,6 @@ public class NewPlayer : PhysicsObject
     public Image healthBar;
     [SerializeField] private Vector2 healthBarOrigSize;
 
-    private float delay = 3;
 
     //Singleton instansiation
     private static NewPlayer instance;
@@ -41,11 +40,27 @@ public class NewPlayer : PhysicsObject
             return instance;
         }
     }
-    
 
+    //keeping original player from previous level and destroying new instance
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+
+        }
+
+    }
 
     void Start()
     {
+        //This keeps the player to port over to the new level
+        DontDestroyOnLoad(gameObject);
+
         healthBarOrigSize = healthBar.rectTransform.sizeDelta;
         UpdateUI();
     }

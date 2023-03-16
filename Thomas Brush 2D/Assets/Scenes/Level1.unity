@@ -3406,11 +3406,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556191616272447216, guid: 76c7cf0234761854d8ccccf58bdefc5a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.05
+      value: -35.32
       objectReference: {fileID: 0}
     - target: {fileID: 2556191616272447216, guid: 76c7cf0234761854d8ccccf58bdefc5a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.61
+      value: 11.86
       objectReference: {fileID: 0}
     - target: {fileID: 2556191616272447216, guid: 76c7cf0234761854d8ccccf58bdefc5a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3749,6 +3749,22 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1475155460}
+    - target: {fileID: 6778212241991617383, guid: 7d4ed61e3a3c8744b93369c8ac47ce5e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -25.59634
+      objectReference: {fileID: 0}
+    - target: {fileID: 6778212241991617383, guid: 7d4ed61e3a3c8744b93369c8ac47ce5e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.5231633
+      objectReference: {fileID: 0}
+    - target: {fileID: 6778212241993082417, guid: 7d4ed61e3a3c8744b93369c8ac47ce5e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.000462
+      objectReference: {fileID: 0}
+    - target: {fileID: 6778212241993082417, guid: 7d4ed61e3a3c8744b93369c8ac47ce5e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.5564065
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d4ed61e3a3c8744b93369c8ac47ce5e, type: 3}
 --- !u!1001 &8765229898016636169
@@ -3815,6 +3831,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 139367266}
     m_Modifications:
+    - target: {fileID: 9145312689846666545, guid: 301c1be65358f514d90b578129638c1e, type: 3}
+      propertyPath: loadScenesString
+      value: Level2
+      objectReference: {fileID: 0}
     - target: {fileID: 9145312689846666547, guid: 301c1be65358f514d90b578129638c1e, type: 3}
       propertyPath: m_RootOrder
       value: 8
