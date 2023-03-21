@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Enemy : PhysicsObject
 {
-    [SerializeField] private float maxSpeed;
-    private int direction = 1;
+    [Header("Attributes")]
+
     [SerializeField] private int attackPower = 10;
+    private int direction = 1;
+    [SerializeField] private float maxSpeed;
     public int health = 100;
     private int maxHealth = 100;
+
+    [Header("Raycast")]
 
     private RaycastHit2D rightLedgeRaycastHit;
     private RaycastHit2D leftLedgeRaycastHit;
@@ -64,7 +68,6 @@ public class Enemy : PhysicsObject
     {
         if (collision.gameObject == NewPlayer.Instance.gameObject)
         {
-            Debug.Log("I am enemy. I hurt player!");
             NewPlayer.Instance.health -= attackPower;
             NewPlayer.Instance.UpdateUI();
         }

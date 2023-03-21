@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     //Singleton instansiation
     private static GameManager _instance;
     public static GameManager Instance => _instance;
-  
+
 
     private void Awake()
     {
@@ -26,14 +26,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-    }
-
-    void Update()
-    {
-        
     }
 }

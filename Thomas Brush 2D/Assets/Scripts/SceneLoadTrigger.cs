@@ -10,7 +10,6 @@ public class SceneLoadTrigger : MonoBehaviour
     {
         if (collision.gameObject == NewPlayer.Instance.gameObject)
         {
-            Debug.Log("Well done. You are going to the next level. ");
             SceneManager.LoadScene(loadScenesString);
             NewPlayer.Instance.SetSpawnPosition();
         }

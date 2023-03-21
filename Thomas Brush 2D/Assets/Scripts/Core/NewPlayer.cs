@@ -1,32 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class NewPlayer : PhysicsObject
 {
+    [Header("Attributes")]
 
-    [SerializeField] private float maxSpeed = 1;
+    public int attackPower = 25;
+    [SerializeField] private float attackDuration;
     [SerializeField] private float jumpPower = 10f;
+    [SerializeField] private float maxSpeed = 1;
+
+    [Header("Inventory")]
 
     public int coinsCollected;
     private int maxHealth = 100;
     public int health = 100;
     public int ammo;
+
+    [Header("References")]
+
     [SerializeField] private GameObject attackBox;
-    [SerializeField] private float attackDuration;
-    public int attackPower = 25;
-
     public Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
-    public Sprite keySprite;
-   
-    public Sprite keyGemSprite;
     public Sprite inventoryItemBlank;
-
-  
-    [SerializeField] private Vector2 healthBarOrigSize;
+    public Sprite keyGemSprite;
+    public Sprite keySprite;
+    private Vector2 healthBarOrigSize;
 
 
     //Singleton instansiation
