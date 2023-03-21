@@ -12,6 +12,7 @@ public class SceneLoadTrigger : MonoBehaviour
         {
             Debug.Log("Well done. You are going to the next level. ");
             SceneManager.LoadScene(loadScenesString);
+            NewPlayer.Instance.SetSpawnPosition();
         }
     }
 }

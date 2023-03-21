@@ -21,12 +21,11 @@ public class NewPlayer : PhysicsObject
 
     public Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
     public Sprite keySprite;
-    public Image inventoryItemImage;
+   
     public Sprite keyGemSprite;
     public Sprite inventoryItemBlank;
 
-    public Text coinsText;
-    public Image healthBar;
+  
     [SerializeField] private Vector2 healthBarOrigSize;
 
 
@@ -61,8 +60,10 @@ public class NewPlayer : PhysicsObject
         //This keeps the player to port over to the new level
         DontDestroyOnLoad(gameObject);
 
-        healthBarOrigSize = healthBar.rectTransform.sizeDelta;
+        healthBarOrigSize = GameManager.Instance.healthBar.rectTransform.sizeDelta;
         UpdateUI();
+
+        SetSpawnPosition();
     }
 
     // Update is called once per frame
@@ -106,9 +107,9 @@ public class NewPlayer : PhysicsObject
     public void UpdateUI()
     {
         //changes coinstext int to a string so it can be displayed in the UI
-        coinsText.text = coinsCollected.ToString();
+        GameManager.Instance.coinsText.text = coinsCollected.ToString();
         //set the health bar to a percentage of its original width
-        healthBar.rectTransform.sizeDelta = new Vector2(healthBarOrigSize.x * ((float)health / (float)maxHealth), healthBar.rectTransform.sizeDelta.y);
+        GameManager.Instance.healthBar.rectTransform.sizeDelta = new Vector2(healthBarOrigSize.x * ((float)health / (float)maxHealth), GameManager.Instance.healthBar.rectTransform.sizeDelta.y);
 
     }
 
@@ -116,16 +117,20 @@ public class NewPlayer : PhysicsObject
     {
         inventory.Add(inventoryName, image);
         //changes the blank sprite to the key sprite
-        inventoryItemImage.sprite = inventory[inventoryName];
+        GameManager.Instance.inventoryItemImage.sprite = inventory[inventoryName];
     }
 
     public void RemoveInventoryItem(string inventoryName)
     {
         inventory.Remove(inventoryName);
         //changes the key sprite to the blank sprite
-        inventoryItemImage.sprite = inventoryItemBlank;
+        GameManager.Instance.inventoryItemImage.sprite = inventoryItemBlank;
     }
 
+    public void SetSpawnPosition()
+    {
+        transform.position = GameObject.Find("SpawnLocation").transform.position;
+    }
     public void Die()
     {
         if (health <= 0)
