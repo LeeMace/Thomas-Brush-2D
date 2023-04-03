@@ -23,7 +23,7 @@ public class NewPlayer : PhysicsObject
 
     [SerializeField] private GameObject attackBox;
     public Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
-    public Sprite inventoryItemBlank;
+    public Sprite inventoryItemBlank; //The default inventory slot sprite
     public Sprite keyGemSprite;
     public Sprite keySprite;
     private Vector2 healthBarOrigSize;
@@ -33,7 +33,7 @@ public class NewPlayer : PhysicsObject
     private static NewPlayer instance;
     public static NewPlayer Instance
     {
-        get 
+        get
         {
             if (instance == null) instance = GameObject.FindObjectOfType<NewPlayer>();
             return instance;
@@ -50,9 +50,7 @@ public class NewPlayer : PhysicsObject
         else
         {
             Destroy(gameObject);
-
         }
-
     }
 
     void Start()
@@ -77,11 +75,11 @@ public class NewPlayer : PhysicsObject
         }
 
         //flip the player if moving left or right
-        if(targetVelocity.x < -.01)
+        if (targetVelocity.x < -.01)
         {
             transform.localScale = new Vector2(-1, 1);
         }
-        else if(targetVelocity.x > .01)
+        else if (targetVelocity.x > .01)
         {
             transform.localScale = new Vector2(1, 1);
         }
@@ -95,14 +93,13 @@ public class NewPlayer : PhysicsObject
         {
             Die();
         }
-
     }
-        public IEnumerator ActivateAttack()
-        {
+    public IEnumerator ActivateAttack()
+    {
         attackBox.SetActive(true);
         yield return new WaitForSeconds(attackDuration);
         attackBox.SetActive(false);
-        }
+    }
 
     public void UpdateUI()
     {
@@ -110,7 +107,6 @@ public class NewPlayer : PhysicsObject
         GameManager.Instance.coinsText.text = coinsCollected.ToString();
         //set the health bar to a percentage of its original width
         GameManager.Instance.healthBar.rectTransform.sizeDelta = new Vector2(healthBarOrigSize.x * ((float)health / (float)maxHealth), GameManager.Instance.healthBar.rectTransform.sizeDelta.y);
-
     }
 
     public void AddInventoryItem(string inventoryName, Sprite image)

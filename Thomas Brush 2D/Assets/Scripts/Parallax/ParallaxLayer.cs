@@ -18,5 +18,4 @@ public class ParallaxLayer : MonoBehaviour
         newPosition.y -= positionChangeY * (-parallaxAmount * 40) * (Time.deltaTime);
         transform.localPosition = newPosition;
     }
-
 }
