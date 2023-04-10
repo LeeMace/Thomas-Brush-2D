@@ -9,6 +9,7 @@ public class Gate : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == NewPlayer.Instance.gameObject)
+                print("the player is touching me");
         {
             if (NewPlayer.Instance.inventory.ContainsKey(requiredInventoryItemString))
             {
